@@ -1,6 +1,4 @@
 import React from 'react';
-// import GitHubIcon from '@material-ui/icons/GitHub';
-// import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 const Footer = () => {
   return (
@@ -18,7 +16,6 @@ const Footer = () => {
             className='flex items-center space-x-2 text-white hover:text-gray-300 transition-colors duration-300'
             aria-label='GitHub profile'
           >
-            {/* <GitHubIcon /> */}
             <span>GitHub</span>
           </a>
           <a
@@ -28,7 +25,6 @@ const Footer = () => {
             className='flex items-center space-x-2 text-white hover:text-gray-300 transition-colors duration-300'
             aria-label='LinkedIn profile'
           >
-            {/* <LinkedInIcon /> */}
             <span>LinkedIn</span>
           </a>
         </div>
