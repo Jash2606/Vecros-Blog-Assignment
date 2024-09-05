@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { BlogCard } from './index.js';
+import { SearchBar } from '../components';
+
 
 const BlogsList = () => {
   const [postsList, setPostsList] = useState([]);
+  const [filteredBlogs, setFilteredBlogs] = useState([]);
 
   const posts = JSON.parse(localStorage.getItem("posts"));
 
@@ -10,6 +13,7 @@ const BlogsList = () => {
     if (posts) {
       const sortedPosts = posts.slice().sort((a, b) => b.createdAt.localeCompare(a.createdAt));
       setPostsList(sortedPosts);
+      setFilteredBlogs(sortedPosts); // Initially show all posts
     }
   }, [posts?.length]);
 
@@ -20,9 +24,13 @@ const BlogsList = () => {
       >
         Discover Our Latest Blogs and Insights
       </h1>
+
+      {/* Pass a callback to update filtered blogs */}
+      <SearchBar blogs={postsList} onFilteredBlogs={setFilteredBlogs} />
+
       <div className='grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-2'>
         {
-          postsList?.map((item) => (
+          filteredBlogs?.map((item) => (
             <div key={item.id}>
               <BlogCard data={item} />
             </div>
